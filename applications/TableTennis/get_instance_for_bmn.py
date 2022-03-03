@@ -12,13 +12,13 @@ import numpy as np
 import math
 
 # for table tennis
-bmn_window = 8
-dataset = "/home/aistudio/work/BMN/"
-feat_dir = dataset + '/Features_example'
+bmn_window = 4
+dataset = "/home/aistudio/data"
+feat_dir = dataset + '/Features_train'
 out_dir = dataset + '/Input_for_bmn'
 label_files = {
-    'train': 'label_cls14_small_train.json',
-    'validation': 'label_cls14_small_test.json'
+    'train': 'label_cls14_train.json',
+    'validation': 'label_cls14_val.json'  
 }
 
 global fps

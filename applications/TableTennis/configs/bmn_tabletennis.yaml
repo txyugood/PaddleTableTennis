@@ -3,74 +3,74 @@ MODEL:                                              #MODEL field
   backbone:
     name: "BMN"
     feat_dim: 2048
-    tscale: 200
-    dscale: 200
+    tscale: 100
+    dscale: 100
     prop_boundary_ratio: 0.5
     num_sample: 32
     num_sample_perbin: 3
   loss:
     name: "BMNLoss"
-    tscale: 200
-    dscale: 200
+    tscale: 100
+    dscale: 100
 
 DATASET:                                            #DATASET field
-  batch_size: 4                                 #single card bacth size
+  batch_size: 16                                 #single card bacth size
   test_batch_size: 1
   num_workers: 8
   train:
     format: "BMNDataset"
-    file_path: "/home/aistudio/work/BMN/Input_for_bmn/label_fixed.json"
+    file_path: "/home/aistudio/data/Input_for_bmn/label_fixed.json"
     subset: "train"
   valid:
     format: "BMNDataset"
-    file_path: "/home/aistudio/work/BMN/Input_for_bmn/label_fixed.json"
+    file_path: "/home/aistudio/data/Input_for_bmn/label_fixed.json"
     subset: "validation"
   test:
     format: "BMNDataset"
     test_mode: True
-    file_path: "/home/aistudio/work/BMN/Input_for_bmn/label_fixed.json"
+    file_path: "/home/aistudio/data/Input_for_bmn/label_fixed.json"
     subset: "validation"
 
 PIPELINE:                                           #PIPELINE field
   train:                                            #Mandotary, indicate the pipeline to deal with the training data
     load_feat:
       name: "LoadFeat"
-      feat_path: "/home/aistudio/work/BMN/Input_for_bmn/feature"
+      feat_path: "/home/aistudio/data/Input_for_bmn/feature"
     transform:                                      #Mandotary, image transfrom operator
       - GetMatchMap:
-          tscale: 200
+          tscale: 100
       - GetVideoLabel:
-          tscale: 200
-          dscale: 200
+          tscale: 100
+          dscale: 100
 
   valid:                                            #Mandotary, indicate the pipeline to deal with the training data
     load_feat:
       name: "LoadFeat"
-      feat_path: "/home/aistudio/work/BMN/Input_for_bmn/feature"
+      feat_path: "/home/aistudio/data/Input_for_bmn/feature"
     transform:                                      #Mandotary, image transfrom operator
       - GetMatchMap:
-          tscale: 200
+          tscale: 100
       - GetVideoLabel:
-          tscale: 200
-          dscale: 200
+          tscale: 100
+          dscale: 100
 
   test:                                             #Mandatory, indicate the pipeline to deal with the validing data
     load_feat:
       name: "LoadFeat"
-      feat_path: "/home/aistudio/work/BMN/Input_for_bmn/feature"
+      feat_path: "/home/aistudio/data/Input_for_bmn/feature"
     transform:                                      #Mandotary, image transfrom operator
       - GetMatchMap:
-          tscale: 200
+          tscale: 100
       - GetVideoLabel:
-          tscale: 200
-          dscale: 200
+          tscale: 100
+          dscale: 100
 
 OPTIMIZER:                                          #OPTIMIZER field
   name: 'Adam'
   learning_rate:
     iter_step: True
     name: 'CustomPiecewiseDecay'
-    boundaries: [4200]
+    boundaries: [12000]
     values: [0.001, 0.0001]
   weight_decay:
     name: 'L2'
@@ -78,8 +78,8 @@ OPTIMIZER:                                          #OPTIMIZER field
 
 METRIC:
   name: 'BMNMetric'
-  tscale: 200
-  dscale: 200
+  tscale: 100
+  dscale: 100
   file_path: "/home/aistudio/work/BMN/Input_for_bmn/label_fixed.json"
   ground_truth_filename: "/home/aistudio/work/BMN/Input_for_bmn/label_gts.json"
   subset: "validation"
@@ -89,8 +89,8 @@ METRIC:
 INFERENCE:
     name: 'BMN_Inference_helper'
     feat_dim: 2048
-    dscale: 200
-    tscale: 200
+    dscale: 100
+    tscale: 100
     result_path: "data/bmn/BMN_INFERENCE_results"
 
 model_name: BMN

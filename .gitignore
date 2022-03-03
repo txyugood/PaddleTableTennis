@@ -5,7 +5,8 @@ __pycache__/
 *.swp
 *.swo
 *.swn
-
+output/
+inference/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

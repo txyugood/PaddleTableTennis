@@ -61,7 +61,7 @@ class InferModel(object):
                        pred_bmn,
                        pred_start,
                        pred_end,
-                       max_window=200,
+                       max_window=100,
                        min_window=5):
         """generate_props"""
         video_len = min(pred_bmn.shape[-1],

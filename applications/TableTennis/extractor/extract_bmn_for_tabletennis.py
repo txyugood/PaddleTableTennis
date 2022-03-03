@@ -14,7 +14,7 @@ import shutil
 import numpy as np
 
 sys.path.append(
-    "/workspace/bianjiang03/App_TableTennis/PaddleVideo/FootballAction/predict/action_detect"
+    "/home/aistudio/work/PaddleVideo/applications/TableTennis/predict/action_detect"
 )
 import models.bmn_infer as prop_model
 from utils.preprocess import get_images
@@ -66,8 +66,8 @@ def video_classify(video_name, dataset_dir):
 
 
 if __name__ == '__main__':
-    dataset_dir = '/workspace/bianjiang03/DATA/Features_competition_test_A/'
-    output_dir = '/workspace/bianjiang03/DATA'
+    dataset_dir = '/home/aistudio/data/Features_test/'
+    output_dir = '/home/aistudio/data'
     if not os.path.exists(output_dir + '/Output_for_bmn'):
         os.mkdir(output_dir + '/Output_for_bmn')
     results = []

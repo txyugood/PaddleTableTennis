@@ -1,7 +1,7 @@
 import json
 import math
 
-with open('/workspace/bianjiang03/DATA/Output_for_bmn/prop.json') as f:
+with open('/home/aistudio/data/Output_for_bmn/prop.json') as f:
     data = json.load(f)
 f.close()
 
@@ -29,7 +29,7 @@ target_format = {
 }
 
 jsonString = json.dumps(target_format, indent=4, ensure_ascii=False)
-jsonFile = open('/workspace/bianjiang03/DATA/Output_for_bmn/submission.json',
+jsonFile = open('/home/aistudio/submission.json',
                 'w')
 jsonFile.write(jsonString)
 jsonFile.close()
